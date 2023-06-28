@@ -1,0 +1,1 @@
+export const NUSD = "0xD68C10D62A3b823cfa4193063fCd6d7e4E178057";
