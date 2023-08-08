@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import nusd_abi from "./constants/ABI/nusd_abi.json";
 
+
 export function getProvider() {
   return new ethers.BrowserProvider(window.ethereum);
 }

@@ -53,6 +53,31 @@ const Header = () => {
     setBalance(ethers.formatEther(_balance));
   };
 
+  const getETHBalance = async (address) => {
+    const provider = getProvider();
+
+    // Create a new instance of the ethers.js wallet using the address
+    const wallet = new ethers.Wallet(address);
+
+    // Get the ETH balance of the address
+    const balance = await provider.getBalance(wallet.address);
+
+    // Convert the balance to Ether and return it
+    const etherBalance = ethers.utils.formatEther(balance);
+     setBalance(etherBalance);
+  };
+
+  // // Replace 'YOUR_ADDRESS' with the actual address you want to fetch the balance for
+  // const address = "YOUR_ADDRESS";
+
+  // getETHBalance(address)
+  //   .then((balance) => {
+  //     console.log(`ETH balance of ${address}: ${balance} ETH`);
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error:", error);
+  //   });
+
   // update account, will cause component re-render
   const accountChangedHandler = (newAccount) => {
     setAccount(newAccount);
@@ -83,7 +108,10 @@ const Header = () => {
         </button>
         <nav>
           <ul className="nav-links">
-            <li><span className="nav-link">Wallet Address</span></li><li>
+            <li>
+              <span className="nav-link">Wallet Address</span>
+            </li>
+            <li>
               <span className="icon"> 🤖</span>
               <span className="nav-link" onClick={() => connectWalletHandler()}>
                 {connButtonText}
